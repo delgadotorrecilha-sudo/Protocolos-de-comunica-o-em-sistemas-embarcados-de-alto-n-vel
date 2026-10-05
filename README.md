@@ -9,4 +9,4 @@ Introdução ao uso de protocolos de comunicação em sistemas com Linux embarca
 Leituras analógicas, I2C, programação em C, comunicação serial, controller/responder, RFID,
 banco de dados, web server, SPI.
 ## 3. Estrutura de Arquivos
-Checkpoint 1 : -``
+Checkpoint 1 : -`checkpoint4.1.py` `Checkpoint4.1.ino`
