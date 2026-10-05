@@ -2,6 +2,7 @@
 **Instituição:** Escola de Engenharia de São Carlos (EESC-USP)  
 **Alunos:** 
 Luís Carlos Delgado Torrecilha - 15472530
+
 Beatriz Fonseca Silva - 15653959
 ## 1. Descrição do Projeto
 Introdução ao uso de protocolos de comunicação em sistemas com Linux embarcado, leitura de dados analógicos, uso de periféricos e comunicação serial entre sistemas embarcados distintos (SBC/Linux embarcado e microcontrolador), a partir de programação em “C” em microcontroladores.
