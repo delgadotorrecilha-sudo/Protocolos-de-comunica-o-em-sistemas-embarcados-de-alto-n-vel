@@ -12,3 +12,4 @@ Leituras analógicas, I2C, programação em C, comunicação serial, controller/
 banco de dados, web server, SPI.
 ## 3. Estrutura de Arquivos
 Checkpoint 1 : -`checkpoint4.1.py` `Checkpoint4.1.ino`
+Checkpoint 2 : -`checkpoint4.2.py` `Checkpoint4_1.ino`
