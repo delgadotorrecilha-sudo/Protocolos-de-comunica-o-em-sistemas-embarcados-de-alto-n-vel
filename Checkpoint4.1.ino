@@ -1,33 +1,51 @@
-#include <Wire.h> // inclui a biblioteca para usar a comunicação i2c
+// Luís Carlos Delgado Torrecilha - 15472530
+// Beatriz Fonseca Silva - 15653959
+#include <Wire.h> // Importa a biblioteca Wire, que é a biblioteca padrão do Arduino para comunicação I2C
 
-#define ENDERECO_I2C 0X08 // define o endereço desse arduino na rede i2c
-const int pinoPotenciometro = A0; // avisa que o potenciômetro tá no pino analógico a0
-int valorAnalogico = 0; // variável que vai guardar a leitura do potenciômetro
+#define ENDERECO_I2C 0X08 // Define uma constante para o endereço I2C deste Arduino (configurado como dispositivo escravo no endereço 8)
 
+const int pinoPotenciometro = A0; // Define que o potenciômetro está conectado ao pino analógico A0 da placa
+int valorAnalogico = 0; // Cria uma variável inteira global para armazenar o valor lido do potenciômetro, iniciando em 0
+
+// A função setup() é executada apenas uma vez quando o Arduino é ligado ou resetado
 void setup(){
-  Wire.begin(ENDERECO_I2C); // liga o i2c usando o endereço escolhido ali em cima
-  Wire.onRequest(enviarDados); // quando o mestre pedir dados, avisa pra rodar a função 'enviardados'
-  Serial.begin(9600); // liga o monitor serial pra gente ver o que tá rolando na tela
+  // Inicializa o barramento I2C atribuindo a este Arduino o endereço definido acima (0x08), configurando-o como escravo
+  Wire.begin(ENDERECO_I2C);
+  
+  // Configura um "gatilho" (interrupção): sempre que o dispositivo mestre solicitar informações, a função 'enviarDados' será executada automaticamente
+  Wire.onRequest(enviarDados);
+  
+  // Inicializa a comunicação serial a uma taxa de 9600 bits por segundo para permitir a visualização dos dados no Monitor Serial do computador
+  Serial.begin(9600);
 }
 
+// A função loop() é o corpo principal do programa e se repete infinitamente
 void loop(){
-  valorAnalogico = analogRead(pinoPotenciometro); // faz a leitura do pino do potenciômetro e guarda na variável
+  // Lê o sinal analógico atual do potenciômetro no pino A0. O Arduino converte a tensão (0 a 5V) em um número de 10 bits (0 a 1023)
+  valorAnalogico = analogRead(pinoPotenciometro);
 
-  Serial.print("Valor lido no Arduino:"); // escreve a frase no monitor serial
-  Serial.println(valorAnalogico); // mostra o número que foi lido e pula uma linha
-  delay(500); // dá uma pausa de meio segundo pra não floodar a tela de informação
+  // Imprime o texto descritivo no Monitor Serial do computador
+  Serial.print("Valor lido no Arduino:");
+  
+  // Imprime o valor numérico lido na mesma linha e pula para a próxima linha (println)
+  Serial.println(valorAnalogico);
+  
+  // Pausa a execução por 500 milissegundos (meio segundo) para não sobrecarregar a porta serial com impressões muito rápidas
+  delay(500);
 }
 
+// Esta é a função de serviço (handler) associada ao evento Wire.onRequest configurado no setup()
 void enviarDados(){
-  byte dados[2]; // cria uma caixinha pra guardar 2 bytes (já que o int é muito grande pra ir de uma vez só)
+  // Cria um array (vetor) de 2 posições do tipo byte. 
+  // Isso é necessário porque o protocolo I2C transmite dados em pacotes de 8 bits (1 byte), e o valor analógico (até 1023) ocupa 16 bits (2 bytes).
+  byte dados[2];
 
-  dados[0] = highByte(valorAnalogico); // pega a metade de cima do valor e guarda no primeiro espaço
-  dados[1] = lowByte(valorAnalogico); // pega a metade de baixo do valor e guarda no segundo espaço
-
-  Wire.write(dados, 2); // manda os 2 bytes pelo i2c pra quem tiver pedindo
-}
+  // A função highByte() extrai a metade superior (os 8 bits mais significativos) da variável inteira e armazena na posição 0 do vetor
   dados[0] = highByte(valorAnalogico);
+  
+  // A função lowByte() extrai a metade inferior (os 8 bits menos significativos) da variável inteira e armazena na posição 1 do vetor
   dados[1] = lowByte(valorAnalogico);
 
+  // Envia o array contendo os 2 bytes fragmentados de volta para o dispositivo mestre através do barramento I2C
   Wire.write(dados, 2);
 }
