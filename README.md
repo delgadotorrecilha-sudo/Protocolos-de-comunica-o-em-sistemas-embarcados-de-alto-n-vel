@@ -13,6 +13,9 @@ banco de dados, web server, SPI.
 ## 3. Estrutura de Arquivos
 Checkpoint 1 : -`checkpoint4.1.py` `Checkpoint4.1.ino`
 Checkpoint 2 : -`checkpoint4.2.py` `Checkpoint4_1.ino`
-Checkpoint 3 : -`checkpoint43.py` `Checkpoint432.py`
+Checkpoint 3 : -`checkpoint43.py` `chekpoint432.py`
 ## 4. Fotos Exemplos do Projeto
 ![Montagens do Checkpoint2 em Bancada](https://github.com/delgadotorrecilha-sudo/Protocolos-de-comunica-o-em-sistemas-embarcados-de-alto-n-vel/blob/main/Checkpoint2Bancada.jpeg)
+![Resultado Checkpoint2](https://github.com/delgadotorrecilha-sudo/Protocolos-de-comunica-o-em-sistemas-embarcados-de-alto-n-vel/blob/main/Checkpoint2Pi.jpeg)![Resultado Checkpoint2 Serial](https://github.com/delgadotorrecilha-sudo/Protocolos-de-comunica-o-em-sistemas-embarcados-de-alto-n-vel/blob/main/Checkpoint2Serial.jpeg)
+![Montagens do Checkpoint3 em Bancada](https://github.com/delgadotorrecilha-sudo/Protocolos-de-comunica-o-em-sistemas-embarcados-de-alto-n-vel/blob/main/Checkpoint3Bancada.jpeg)
+![Resultado Checkpoint3](https://github.com/delgadotorrecilha-sudo/Protocolos-de-comunica-o-em-sistemas-embarcados-de-alto-n-vel/blob/main/Checkpoint3Pi.jpeg)
